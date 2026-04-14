@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -8,9 +8,10 @@ import './styles.css';
 
 import logoImg from '../../assets/logo.svg';
 import heroesImg from '../../assets/heroes.png';
+
 export default function Logon() {
     const [id, setId] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -21,9 +22,9 @@ export default function Logon() {
             localStorage.setItem('ongId', id);
             localStorage.setItem('ongName', response.data.name);
 
-            history.push('/profile');
+            navigate('/profile');
         } catch (err) {
-            alert('Falha no login, tente novamente.')
+            alert('Falha no login, tente novamente.');
         }
     }
 
@@ -35,13 +36,14 @@ export default function Logon() {
                 <form onSubmit={handleLogin}>
                     <h1>Faça seu logon</h1>
 
-                    <input placeholder="Sua Id" 
-                    value={id}
-                    onChange={e => setId(e.target.value)}
+                    <input
+                        placeholder="Sua Id"
+                        value={id}
+                        onChange={e => setId(e.target.value)}
                     />
                     <button className="button" type="submit">Entrar</button>
 
-                    <Link className="back-link"to="/register">
+                    <Link className="back-link" to="/register">
                         <FiLogIn size={16} color="#E02041" />
                         Não tenho Cadastro
                     </Link>
