@@ -1,7 +1,7 @@
-const connection = require('../database/connections');
-const crypto = require('crypto');
+import connection from '../database/connections.js';
+import crypto from 'crypto';
 
-module.exports = {
+export const OngController = {
     async index(request, response) {
         const ongs = await connection('ongs').select('*');
       
@@ -20,7 +20,7 @@ module.exports = {
             whatsapp,
             city,
             uf,
-        })
+        });
         return response.json({ id });
     }
-}
+};

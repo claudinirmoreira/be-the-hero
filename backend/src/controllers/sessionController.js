@@ -1,6 +1,6 @@
-const connection = require('../database/connections');
+import connection from '../database/connections.js';
 
-module.exports = {
+export const sessionController = {
     async create(request, response) {
         const { id } = request.body;
 
@@ -14,4 +14,4 @@ module.exports = {
         }
         return response.json(ong);
     }
-}
+};

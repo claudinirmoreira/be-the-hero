@@ -1,6 +1,6 @@
-const connection = require('../database/connections');
+import connection from '../database/connections.js';
 
-module.exports = {
+export const profileController = {
     async index(request, response) {
         const ong_id = request.headers.authorization;
 

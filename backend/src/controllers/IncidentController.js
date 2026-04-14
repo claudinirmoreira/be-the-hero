@@ -1,6 +1,6 @@
-const connection = require('../database/connections');
+import connection from '../database/connections.js';
 
-module.exports = {
+export const IncidentController = {
     async index(request, response) {
         const { page = 1} = request.query;
 
